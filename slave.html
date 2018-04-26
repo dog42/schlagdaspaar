@@ -1,0 +1,234 @@
+<!--##############################################################################################################
+DO:
+./start_remote.sh (im Presentationsordner)
+
+oder
+
+╔[dogi@s17852176:/var/www/html/beispielpresi/master]
+╚>$ node plugin/multiplex
+
+brauchich.net/test2/master  -  to control
+brauchich.net/beispielpresi/  -  watch presentation
+
+
+https://github.com/D0gi/reveal.js
+##################################################################################################################
+-->
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Presentation</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/red.css" id="theme">
+	<link rel="stylesheet" href="lib/font/font-awesome/css/font-awesome.min.css" />
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- individual stylesheet -->
+	<link href="css/style.css" rel="stylesheet" />
+
+	<!-- Printing and PDF exports -->
+	<script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+<!-- ############################################################################################################################# -->
+			<section data-markdown section>
+				<script type="text/template">
+				# Kolloquium
+				#### Analyse von WebRTC sowie Entwurf und prototypische Realisierung eines optimierten Signalisierungskonzeptes
+				![Wonderv2Logo](img/image.svg)<!-- .element: width="20%" -->
+				<aside class="notes">
+				Notiz
+				</aside>
+				</script>
+			</section>
+
+
+			<section data-markdown section>
+				<script type="text/template">
+				##
+				
+				<aside class="notes">
+				Notiz
+				</aside>
+				</script>
+			</section>
+
+
+			<section data-markdown section>
+				<script type="text/template">
+				##
+				
+				<aside class="notes">
+				Notiz
+				</aside>
+				</script>
+			</section>
+
+
+			<section data-markdown section>
+				<script type="text/template">
+				##
+				
+				<aside class="notes">
+				Notiz
+				</aside>
+				</script>
+			</section>
+
+
+			<section data-markdown section>
+				<script type="text/template">
+				##
+				
+				<aside class="notes">
+				Notiz
+				</aside>
+				</script>
+			</section>
+
+
+			<section data-markdown section>
+				<script type="text/template">
+				##
+				
+				<aside class="notes">
+				Notiz
+				</aside>
+				</script>
+			</section>
+
+
+			<section data-markdown section>
+				<script type="text/template">
+				##
+				
+				<aside class="notes">
+				Notiz
+				</aside>
+				</script>
+			</section>
+<!-- ############################################################################################################################# -->
+		</div>
+		<div class="slide-footer">
+			<div class="slide-footer-logo">
+				<img id="logo" onclick="togglestyle()" src="img/hftl_icon3.png" width="30%" href="#" onclick=""></img>
+			</div>
+			<div class="slide-footer-logo2">
+				<img id="logo2" onclick="togglestyle()" src="img/dog.svg" width="30%" href="#" #></img>
+			</div>
+			<div class="slide-footer-content">
+				Philipp Dockhorn		
+			</div>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script>
+
+	var mystyle = "dark";
+	function togglestyle(){
+		var mystyles={
+			dark:{
+				css:"red.css",
+				logo:"hftl_icon3.png"
+			},
+			light:{
+				css:"hell.css",
+				logo:"hftl_icon.png"
+			}
+		}
+		mystyle = mystyle == "dark" ? "light" : "dark";
+		document.getElementById('theme').setAttribute('href','css/theme/' + mystyles[mystyle].css); 
+		document.getElementById('logo').setAttribute('src','img/' + mystyles[mystyle].logo);
+		return;
+	}
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+
+		// The "normal" size of the presentation, aspect ratio will be preserved
+	    // when the presentation is scaled to fit different resolutions. Can be
+	    // specified using percentage units.
+	    // width: 1060,
+	    // height: 700,
+
+	    // Factor of the display size that should remain empty around the content
+	    margin: 0.2,
+
+	    // Bounds for smallest/largest possible scale to apply to content
+	    minScale: 0.3,
+	    maxScale: 1.5,
+
+
+	    controls: false,
+	    progress: true,
+	    history: false,
+	    center: true,
+	    slideNumber: false,
+	    hideAddressBar: true,
+	    keyboard: false,
+	    touch: false,
+
+		transition: 'slide', // none/fade/slide/convex/concave/zoom
+		
+		multiplex: {
+            // Example values. To generate your own, see the socket.io server instructions.
+            secret: null, // null so the clients do not have control of the master presentation
+            id: '2a8d56656c27ca92', // id, obtained from socket.io server
+            url: '127.0.0.1:1948' // Location of socket.io server
+        },
+
+		// Optional reveal.js plugins
+		dependencies: [
+		
+		{ src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js', async: true },
+		{ src: 'plugin/multiplex/client.js', async: true },
+
+		
+		{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+		{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+		{ src: 'plugin/zoom-js/zoom.js', async: true },
+		{ src: 'plugin/notes/notes.js', async: true }
+		]
+	});
+
+</script>
+
+</body>
+</html>
